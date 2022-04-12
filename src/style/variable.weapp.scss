@@ -1,0 +1,43 @@
+// 超出内容显示省略号
+@mixin ellipsis($line) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  @if ($line == 1) {
+    white-space: nowrap;
+  }
+  @else {
+    display: -webkit-box;
+    visibility: visible;
+
+    /*! autoprefixer: ignore next */
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $line;
+  }
+}
+
+// 清除浮动
+@mixin clearfix {
+  &::after {
+    display: block;
+    clear: both;
+    height: 0;
+    overflow: hidden;
+    line-height: 0;
+    content: '.';
+  }
+
+  *height: 1%;
+}
+
+// 管理z-index
+@mixin zIndex($selector) {
+  $elmsZIndex: (
+    "detail-header": 800, // 商详 header
+    "cp-backTop": 800, // 公共-回顶按钮
+    "cp-modal": 1500,// 公共-弹层
+    "andr_webview_refresh_mask": 9999999, // 安卓 h5 visibilitychange 兼容方案，顶级
+  );
+
+  z-index: map-get($map: $elmsZIndex, $key: $selector);
+}
