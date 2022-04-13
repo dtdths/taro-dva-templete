@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect } from 'react';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import Taro from '@tarojs/taro';
 import { View, Text, Button } from '@tarojs/components'
@@ -11,6 +11,17 @@ const Index = memo(() => {
   const { indexData } = useSelector((state) => {
     return { indexData: state?.index?.indexData }
   }, shallowEqual);
+
+  useEffect(() => {
+    (async () => {
+      await dispatch({
+        type: 'index/getIndexData2',
+        payload: {
+          page: 1,
+        }
+      });
+    })();
+  }, [dispatch]);
 
   return (
     <View className={classNames('page', styles.page)}>

@@ -1,4 +1,5 @@
 import { delay } from "@/utils/tools";
+import {fetchIndexData} from '@/services/home';
 
 export default {
   namespace: 'index', // 这是模块名
@@ -6,6 +7,31 @@ export default {
     indexData: 0,
   },
   effects: {
+    /**
+     * @description 获取列表数据
+     * @param {*} { payload = {} }
+     * @param {*} { call, put, select }
+     */
+    getIndexData2: [
+      function* ({ payload }, { call, put, select }) {
+        try {
+          const res = yield call(fetchIndexData, { data: payload });
+
+          // yield put({
+          //   type: 'save',
+          //   payload: {
+          //     indexData: res,
+          //   },
+          // });
+          return res;
+        } catch (error) {
+          return null;
+        }
+      },
+      {
+        type: 'takeLatest',
+      },
+    ],
     /**
      * @description 获取列表数据
      * @param {*} { payload = {} }

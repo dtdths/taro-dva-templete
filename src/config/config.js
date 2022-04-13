@@ -11,12 +11,12 @@ module.exports = {
     '/pages/my/setting/index': '/my/setting',
   },
   BASENAME: '/test_basename',
-  TABBAR_LIST: [
-    {
-      text: '首页',
-      pagePath: 'pages/index/index',
-      iconPath: 'static/images/tab/home.png',
-      selectedIconPath: 'static/images/tab/home-selected.png',
-    },
-  ],
+  // TABBAR_LIST: [
+  //   {
+  //     text: '首页',
+  //     pagePath: 'pages/index/index',
+  //     iconPath: 'static/images/tab/home.png',
+  //     selectedIconPath: 'static/images/tab/home-selected.png',
+  //   },
+  // ],
 };
